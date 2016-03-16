@@ -10,8 +10,8 @@ public class Panel extends JPanel {
 
 	public Panel() {
 
-		lblTitle = new JLabel("Connect Four");
-		add(lblTitle);
+		//lblTitle = new JLabel("Connect Four");
+		//add(lblTitle);
 		btnA = new JButton("A");
 		btnA.setPreferredSize(new Dimension(100, 100));
 		add(btnA);
