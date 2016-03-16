@@ -8,7 +8,7 @@ public class GUIDriver {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().add(new Panel());
-		frame.setSize(700, 450);
+		frame.setSize(800, 450);
 		frame.setResizable(false);
 	}
 
