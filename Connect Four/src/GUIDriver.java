@@ -1,9 +1,15 @@
+import javax.swing.JFrame;
 
 public class GUIDriver {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
+		JFrame frame = new JFrame ("Connect 4");
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().add(new Panel());
+		frame.setSize(700, 450);
+		frame.setResizable(false);
 	}
 
 }

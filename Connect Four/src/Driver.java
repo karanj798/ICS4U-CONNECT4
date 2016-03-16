@@ -17,7 +17,7 @@ public class Driver {
 			turnSwitcher = true;
 		} else {
 			System.out.println("Player 2...");
-			turnSwitcher = false;
+			turnSwitcher = false;	
 		}
 
 		in.close();
