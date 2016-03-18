@@ -115,6 +115,7 @@ public class Panel extends JPanel {
 				counterD++;
 				//board.updateBoardD(counterD);
 			}
+			// hi
 			if (e.getSource().equals(btnE)){
 				counterE++;
 				//board.updateBoardE(counterE);
