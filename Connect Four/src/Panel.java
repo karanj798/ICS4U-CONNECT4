@@ -9,6 +9,7 @@ public class Panel extends JPanel {
 	JLabel lblTitle;
 	JButton btnA, btnB, btnC, btnD, btnE, btnF, btnG;
 	int counterA, counterB, counterC, counterD, counterE, counterF, counterG;
+	Board board = new Board (counterA, counterB, counterC, counterD, counterE, counterF, counterG);
 
 	public Panel() {
 
@@ -44,13 +45,15 @@ public class Panel extends JPanel {
 	}
 
 	public void paint(Graphics g) {
+		// creating object 
+		board.makeBoard();
 		// col A
 		for (int i = 0; i <= 6; i++) {
 			g.setColor(Color.white);
 			g.fillOval(55, 450 - 50 * i, 50, 50);
 			g.setColor(Color.black);
 			g.drawOval(55, 450 - 50 * i, 50, 50);
-		}
+		} 
 		// col B
 		for (int i = 0; i <= 6; i++) {
 			g.setColor(Color.white);
@@ -98,24 +101,31 @@ public class Panel extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource().equals(btnA)){
 				counterA++;
+				board.updateBoardA(counterA);
 			}
 			if (e.getSource().equals(btnB)){
 				counterB++;
+				//board.updateBoardB(counterB);
 			}
 			if (e.getSource().equals(btnC)){
 				counterC++;
+				//board.updateBoardC(counterC); 
 			}
 			if (e.getSource().equals(btnD)){
 				counterD++;
+				//board.updateBoardD(counterD);
 			}
 			if (e.getSource().equals(btnE)){
 				counterE++;
+				//board.updateBoardE(counterE);
 			}
 			if (e.getSource().equals(btnF)){
 				counterF++;
+				//board.updateBoardF(counterF);
 			}
 			if (e.getSource().equals(btnG)){
 				counterG++;
+				//board.updateBoardG(counterG);
 			}		
 			if (counterA == 7){
 				btnA.setEnabled(false);
