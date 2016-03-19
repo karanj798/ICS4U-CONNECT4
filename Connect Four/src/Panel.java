@@ -9,8 +9,8 @@ public class Panel extends JPanel {
 	JLabel lblTitle;
 	JButton btnA, btnB, btnC, btnD, btnE, btnF, btnG;
 	int counterA, counterB, counterC, counterD, counterE, counterF, counterG;
-	Board board = new Board (counterA, counterB, counterC, counterD, counterE, counterF, counterG);
-
+	boolean switchPlayer = false;
+	Board board = new Board(counterA, counterB, counterC, counterD, counterE, counterF, counterG, switchPlayer);
 	public Panel() {
 
 		btnA = new JButton("A");
@@ -99,13 +99,16 @@ public class Panel extends JPanel {
 	}
 	private class ClickListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
+			
 			if (e.getSource().equals(btnA)){
 				counterA++;
 				board.updateBoardA(counterA);
+				board.printBoard();
 			}
 			if (e.getSource().equals(btnB)){
 				counterB++;
-				//board.updateBoardB(counterB);
+				board.updateBoardB(counterB);
+				board.printBoard();
 			}
 			if (e.getSource().equals(btnC)){
 				counterC++;
