@@ -112,24 +112,28 @@ public class Panel extends JPanel {
 			}
 			if (e.getSource().equals(btnC)){
 				counterC++;
-				//board.updateBoardC(counterC); 
+				board.updateBoardC(counterC);
+				board.printBoard();
 			}
 			if (e.getSource().equals(btnD)){
 				counterD++;
-				//board.updateBoardD(counterD);
+				board.updateBoardD(counterD);
+				board.printBoard();
 			}
-			// hi
 			if (e.getSource().equals(btnE)){
 				counterE++;
-				//board.updateBoardE(counterE);
+				board.updateBoardE(counterE);
+				board.printBoard();
 			}
 			if (e.getSource().equals(btnF)){
 				counterF++;
-				//board.updateBoardF(counterF);
+				board.updateBoardF(counterF);
+				board.printBoard();
 			}
 			if (e.getSource().equals(btnG)){
 				counterG++;
-				//board.updateBoardG(counterG);
+				board.updateBoardG(counterG);
+				board.printBoard();
 			}		
 			if (counterA == 7){
 				btnA.setEnabled(false);
