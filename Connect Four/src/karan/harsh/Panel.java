@@ -45,7 +45,7 @@ public class Panel extends JPanel {
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 7; j++) {
 				lblCircles[i][j] = new JLabel();
-				lblCircles[i][j].setIcon(new ImageIcon("src/resources/whiteChip.png"));
+				lblCircles[i][j].setIcon(new ImageIcon(getClass().getResource("/resources/whiteChip.png")));
 				add(lblCircles[i][j]);
 			}
 		}
@@ -58,6 +58,7 @@ public class Panel extends JPanel {
 		btnF.addActionListener(new ClickListener());
 		btnG.addActionListener(new ClickListener());
 
+		board.makeBoard();
 	}
 
 	public void updateChips() {
@@ -65,9 +66,9 @@ public class Panel extends JPanel {
 		int y = board.getY();
 
 		if (!board.getCondition()) {
-			lblCircles[x][y].setIcon(new ImageIcon("src/resources/redChip.png"));
+			lblCircles[x][y].setIcon(new ImageIcon(getClass().getResource("/resources/redChip.png")));
 		} else {
-			lblCircles[x][y].setIcon(new ImageIcon("src/resources/yellowChip.png"));
+			lblCircles[x][y].setIcon(new ImageIcon(getClass().getResource("/resources/yellowChip.png")));
 		}
 	}
 
@@ -76,7 +77,6 @@ public class Panel extends JPanel {
 
 		public void actionPerformed(ActionEvent e) {
 
-			board.makeBoard();
 			if (e.getSource().equals(btnA)) {
 				Y = 0;
 				X--;
@@ -84,6 +84,8 @@ public class Panel extends JPanel {
 				board.setY(Y);
 				board.updateBoard(X, Y);
 				board.printBoard();
+				board.checkWinnerA();
+				board.checkWinnerB();
 				updateChips();
 				if (X == 0) {
 					btnA.setEnabled(false);
@@ -97,6 +99,8 @@ public class Panel extends JPanel {
 				board.setY(Y);
 				board.updateBoard(X, Y);
 				board.printBoard();
+				board.checkWinnerA();
+				board.checkWinnerB();
 				updateChips();
 				if (X == 0) {
 					btnB.setEnabled(false);
@@ -109,6 +113,8 @@ public class Panel extends JPanel {
 				board.setY(Y);
 				board.updateBoard(X, Y);
 				board.printBoard();
+				board.checkWinnerA();
+				board.checkWinnerB();
 				updateChips();
 				if (X == 0) {
 					btnC.setEnabled(false);
@@ -121,6 +127,8 @@ public class Panel extends JPanel {
 				board.setY(Y);
 				board.updateBoard(X, Y);
 				board.printBoard();
+				board.checkWinnerA();
+				board.checkWinnerB();
 				updateChips();
 				if (X == 0) {
 					btnD.setEnabled(false);
@@ -133,6 +141,8 @@ public class Panel extends JPanel {
 				board.setY(Y);
 				board.updateBoard(X, Y);
 				board.printBoard();
+				board.checkWinnerA();
+				board.checkWinnerB();
 				updateChips();
 				if (X == 0) {
 					btnE.setEnabled(false);
@@ -145,6 +155,8 @@ public class Panel extends JPanel {
 				board.setY(Y);
 				board.updateBoard(X, Y);
 				board.printBoard();
+				board.checkWinnerA();
+				board.checkWinnerB();
 				updateChips();
 				if (X == 0) {
 					btnF.setEnabled(false);
@@ -157,10 +169,23 @@ public class Panel extends JPanel {
 				board.setY(Y);
 				board.updateBoard(X, Y);
 				board.printBoard();
+				board.checkWinnerA();
+				board.checkWinnerB();
 				updateChips();
 				if (X == 0) {
 					btnG.setEnabled(false);
 				}
+			}
+			if (board.getGameOver()){
+				btnA.setEnabled(false);
+				btnB.setEnabled(false);
+				btnC.setEnabled(false);
+				btnD.setEnabled(false);
+				btnE.setEnabled(false);
+				btnF.setEnabled(false);
+				btnG.setEnabled(false);
+				JOptionPane.showMessageDialog(null, "Someone has won!!");
+				System.exit(10);
 			}
 		}
 	}
