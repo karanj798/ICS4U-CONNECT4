@@ -184,8 +184,14 @@ public class Panel extends JPanel {
 				btnE.setEnabled(false);
 				btnF.setEnabled(false);
 				btnG.setEnabled(false);
-				JOptionPane.showMessageDialog(null, "Someone has won!!");
-				System.exit(10);
+				if (board.playerAWon){
+					JOptionPane.showMessageDialog(null, "Player A Won!!");
+					System.exit(10);
+				}
+				else if (board.playerBWon){
+					JOptionPane.showMessageDialog(null, "Player B Won!!");
+					System.exit(10);
+				}				
 			}
 		}
 	}

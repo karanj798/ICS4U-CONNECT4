@@ -4,9 +4,9 @@ public class Board {
 
 	private char board[][] = new char[7][7];
 	int x, y;
-	boolean playerSwitch;
+	boolean playerSwitch, gameEnd, playerAWon, playerBWon;
 	Chip chip = new Chip();
-	boolean gameEnd;
+
 
 	public Board(int x, int y) {
 
@@ -90,6 +90,22 @@ public class Board {
 				}
 			}
 		}
+	}
+	
+	public void setWinnerA (boolean condition){
+		this.playerAWon = condition;
+	}
+	
+	public void setWinnerB (boolean condition){
+		this.playerBWon = condition;
+	}
+	
+	public boolean getWinnerA (){
+		return playerAWon;
+	}
+	
+	public boolean getWinnerB(){
+		return playerBWon;
 	}
 	
 	public void checkWinnerB() {
