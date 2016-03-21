@@ -7,8 +7,5 @@ public class GUIDriver {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800, 550);
 		frame.setResizable(false);
-		
-		
-		
 	}
 }

@@ -5,6 +5,7 @@ public class Chip {
 	private Color color;
 	
 	public Chip() {
+		// default color
 		this.color = Color.WHITE;
 	}
 

@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -8,9 +7,10 @@ public class Panel extends JPanel {
 
 	JLabel lblTitle;
 	JButton btnA, btnB, btnC, btnD, btnE, btnF, btnG;
-	int counterA, counterB, counterC, counterD, counterE, counterF, counterG;
+	int x = 0, y = 7;
 	boolean switchPlayer = false;
-	Board board = new Board(counterA, counterB, counterC, counterD, counterE, counterF, counterG, switchPlayer);
+	Board board = new Board(x, y);
+	Chip chip = new Chip();
 	public Panel() {
 
 		btnA = new JButton("A");
@@ -49,112 +49,121 @@ public class Panel extends JPanel {
 		board.makeBoard();
 		// col A
 		for (int i = 0; i <= 6; i++) {
-			g.setColor(Color.white);
+			g.setColor(chip.getColor());
 			g.fillOval(55, 450 - 50 * i, 50, 50);
 			g.setColor(Color.black);
 			g.drawOval(55, 450 - 50 * i, 50, 50);
 		} 
 		// col B
 		for (int i = 0; i <= 6; i++) {
-			g.setColor(Color.white);
+			g.setColor(chip.getColor());
 			g.fillOval(160, 450 - 50 * i, 50, 50);
 			g.setColor(Color.black);
 			g.drawOval(160, 450 - 50 * i, 50, 50);
 		}
 		// col C
 		for (int i = 0; i <= 6; i++) {
-			g.setColor(Color.white);
+			g.setColor(chip.getColor());
 			g.fillOval(265, 450 - 50 * i, 50, 50);
 			g.setColor(Color.black);
 			g.drawOval(265, 450 - 50 * i, 50, 50);
 		}
 		// col D
 		for (int i = 0; i <= 6; i++) {
-			g.setColor(Color.white);
+			g.setColor(chip.getColor());
 			g.fillOval(370, 450 - 50 * i, 50, 50);
 			g.setColor(Color.black);
 			g.drawOval(370, 450 - 50 * i, 50, 50);
 		}
 		// col E
 		for (int i = 0; i <= 6; i++) {
-			g.setColor(Color.white);
+			g.setColor(chip.getColor());
 			g.fillOval(475, 450 - 50 * i, 50, 50);
 			g.setColor(Color.black);
 			g.drawOval(475, 450 - 50 * i, 50, 50);
 		}
 		// col F
 		for (int i = 0; i <= 6; i++) {
-			g.setColor(Color.white);
+			g.setColor(chip.getColor());
 			g.fillOval(585, 450 - 50 * i, 50, 50);
 			g.setColor(Color.black);
 			g.drawOval(585, 450 - 50 * i, 50, 50);
 		}
 		// col G
 		for (int i = 0; i <= 6; i++) {
-			g.setColor(Color.white);
+			g.setColor(chip.getColor());
 			g.fillOval(685, 450 - 50 * i, 50, 50);
 			g.setColor(Color.black);
 			g.drawOval(685, 450 - 50 * i, 50, 50);
 		}
 	}
 	private class ClickListener implements ActionListener{
+		int X = 7, Y;
 		public void actionPerformed(ActionEvent e) {
 			
 			if (e.getSource().equals(btnA)){
-				counterA++;
-				board.updateBoardA(counterA);
+				Y = 0;
+				X--;
+				board.updateBoard(X, Y);
 				board.printBoard();
+				if (X == 0){
+					btnA.setEnabled(false);
+				}
 			}
+			
 			if (e.getSource().equals(btnB)){
-				counterB++;
-				board.updateBoardB(counterB);
+				Y = 1;
+				X--;
+				board.updateBoard(X, Y);
 				board.printBoard();
+				if (X == 0){
+					btnB.setEnabled(false);
+				}
 			}
 			if (e.getSource().equals(btnC)){
-				counterC++;
-				board.updateBoardC(counterC);
+				Y = 2;
+				X--;
+				board.updateBoard(X, Y);
 				board.printBoard();
+				if (X == 0){
+					btnC.setEnabled(false);
+				}
 			}
 			if (e.getSource().equals(btnD)){
-				counterD++;
-				board.updateBoardD(counterD);
+				Y = 3;
+				X--;
+				board.updateBoard(X, Y);
 				board.printBoard();
+				if (X == 0){
+					btnD.setEnabled(false);
+				}
 			}
 			if (e.getSource().equals(btnE)){
-				counterE++;
-				board.updateBoardE(counterE);
+				Y = 4;
+				X--;
+				board.updateBoard(X, Y);
 				board.printBoard();
+				if (X == 0){
+					btnE.setEnabled(false);
+				}
 			}
 			if (e.getSource().equals(btnF)){
-				counterF++;
-				board.updateBoardF(counterF);
+				Y = 5;
+				X--;
+				board.updateBoard(X, Y);
 				board.printBoard();
+				if (X == 0){
+					btnF.setEnabled(false);
+				}
 			}
 			if (e.getSource().equals(btnG)){
-				counterG++;
-				board.updateBoardG(counterG);
+				Y = 6;
+				X--;
+				board.updateBoard(X, Y);
 				board.printBoard();
-			}		
-			if (counterA == 7){
-				btnA.setEnabled(false);
-			}
-			if (counterB == 7){
-				btnB.setEnabled(false);
-			}
-			if (counterC == 7){
-				btnC.setEnabled(false);
-			}
-			if (counterD == 7){
-				btnD.setEnabled(false);
-			}
-			if (counterE == 7){
-				btnE.setEnabled(false);
-			}
-			if (counterF == 7){
-				btnF.setEnabled(false);
-			}
-			if (counterG == 7){
-				btnG.setEnabled(false);
+				if (X == 0){
+					btnG.setEnabled(false);
+				}
 			}
 		}
 	}
