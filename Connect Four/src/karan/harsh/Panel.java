@@ -1,3 +1,4 @@
+package karan.harsh;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -7,6 +8,7 @@ public class Panel extends JPanel {
 
 	JLabel lblTitle;
 	JButton btnA, btnB, btnC, btnD, btnE, btnF, btnG;
+	JLabel lblCircles; 
 	int x = 0, y = 7;
 	boolean switchPlayer = false;
 	Board board = new Board(x, y);
@@ -35,6 +37,7 @@ public class Panel extends JPanel {
 		btnG.setPreferredSize(new Dimension(100, 100));
 		add(btnG);
 
+		
 		btnA.addActionListener(new ClickListener ());
 		btnB.addActionListener(new ClickListener ());
 		btnC.addActionListener(new ClickListener ());
@@ -45,8 +48,7 @@ public class Panel extends JPanel {
 	}
 
 	public void paint(Graphics g) {
-		// creating object 
-		board.makeBoard();
+		// creating object
 		// col A
 		for (int i = 0; i <= 6; i++) {
 			g.setColor(chip.getColor());
@@ -99,9 +101,8 @@ public class Panel extends JPanel {
 	}
 	private class ClickListener implements ActionListener{
 		int X = 7, Y;
-		// 
 		public void actionPerformed(ActionEvent e) {
-			
+			board.makeBoard();
 			if (e.getSource().equals(btnA)){
 				Y = 0;
 				X--;
