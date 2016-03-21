@@ -1,4 +1,5 @@
 package karan.harsh;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -8,13 +9,17 @@ public class Panel extends JPanel {
 
 	JLabel lblTitle;
 	JButton btnA, btnB, btnC, btnD, btnE, btnF, btnG;
-	JLabel lblCircles; 
+	JLabel lblCircles[][];
 	int x = 0, y = 7;
 	boolean switchPlayer = false;
 	Board board = new Board(x, y);
 	Chip chip = new Chip();
-	public Panel() {
 
+	public Panel() {
+		setPreferredSize(new Dimension(500, 600));
+
+		setLayout(new GridLayout(8, 0, 55, 20));
+		setBackground(Color.BLACK);
 		btnA = new JButton("A");
 		btnA.setPreferredSize(new Dimension(100, 100));
 		add(btnA);
@@ -36,134 +41,124 @@ public class Panel extends JPanel {
 		btnG = new JButton("G");
 		btnG.setPreferredSize(new Dimension(100, 100));
 		add(btnG);
+		lblCircles = new JLabel[7][7];
+		for (int i = 0; i < 7; i++) {
+			for (int j = 0; j < 7; j++) {
+				lblCircles[i][j] = new JLabel();
+				lblCircles[i][j].setIcon(new ImageIcon("src/resources/whiteChip.png"));
+				add(lblCircles[i][j]);
+			}
+		}
 
-		
-		btnA.addActionListener(new ClickListener ());
-		btnB.addActionListener(new ClickListener ());
-		btnC.addActionListener(new ClickListener ());
-		btnD.addActionListener(new ClickListener ());
-		btnE.addActionListener(new ClickListener ());
-		btnF.addActionListener(new ClickListener ());
-		btnG.addActionListener(new ClickListener ());
+		btnA.addActionListener(new ClickListener());
+		btnB.addActionListener(new ClickListener());
+		btnC.addActionListener(new ClickListener());
+		btnD.addActionListener(new ClickListener());
+		btnE.addActionListener(new ClickListener());
+		btnF.addActionListener(new ClickListener());
+		btnG.addActionListener(new ClickListener());
+
 	}
 
-	public void paint(Graphics g) {
-		// creating object
-		// col A
-		for (int i = 0; i <= 6; i++) {
-			g.setColor(chip.getColor());
-			g.fillOval(55, 450 - 50 * i, 50, 50);
-			g.setColor(Color.black);
-			g.drawOval(55, 450 - 50 * i, 50, 50);
-		} 
-		// col B
-		for (int i = 0; i <= 6; i++) {
-			g.setColor(chip.getColor());
-			g.fillOval(160, 450 - 50 * i, 50, 50);
-			g.setColor(Color.black);
-			g.drawOval(160, 450 - 50 * i, 50, 50);
-		}
-		// col C
-		for (int i = 0; i <= 6; i++) {
-			g.setColor(chip.getColor());
-			g.fillOval(265, 450 - 50 * i, 50, 50);
-			g.setColor(Color.black);
-			g.drawOval(265, 450 - 50 * i, 50, 50);
-		}
-		// col D
-		for (int i = 0; i <= 6; i++) {
-			g.setColor(chip.getColor());
-			g.fillOval(370, 450 - 50 * i, 50, 50);
-			g.setColor(Color.black);
-			g.drawOval(370, 450 - 50 * i, 50, 50);
-		}
-		// col E
-		for (int i = 0; i <= 6; i++) {
-			g.setColor(chip.getColor());
-			g.fillOval(475, 450 - 50 * i, 50, 50);
-			g.setColor(Color.black);
-			g.drawOval(475, 450 - 50 * i, 50, 50);
-		}
-		// col F
-		for (int i = 0; i <= 6; i++) {
-			g.setColor(chip.getColor());
-			g.fillOval(585, 450 - 50 * i, 50, 50);
-			g.setColor(Color.black);
-			g.drawOval(585, 450 - 50 * i, 50, 50);
-		}
-		// col G
-		for (int i = 0; i <= 6; i++) {
-			g.setColor(chip.getColor());
-			g.fillOval(685, 450 - 50 * i, 50, 50);
-			g.setColor(Color.black);
-			g.drawOval(685, 450 - 50 * i, 50, 50);
+	public void updateChips() {
+		int x = board.getX();
+		int y = board.getY();
+
+		if (!board.getCondition()) {
+			lblCircles[x][y].setIcon(new ImageIcon("src/resources/redChip.png"));
+		} else {
+			lblCircles[x][y].setIcon(new ImageIcon("src/resources/yellowChip.png"));
 		}
 	}
-	private class ClickListener implements ActionListener{
+
+	private class ClickListener implements ActionListener {
 		int X = 7, Y;
+
 		public void actionPerformed(ActionEvent e) {
+
 			board.makeBoard();
-			if (e.getSource().equals(btnA)){
+			if (e.getSource().equals(btnA)) {
 				Y = 0;
 				X--;
+				board.setX(X);
+				board.setY(Y);
 				board.updateBoard(X, Y);
 				board.printBoard();
-				if (X == 0){
+				updateChips();
+				if (X == 0) {
 					btnA.setEnabled(false);
 				}
 			}
-			
-			if (e.getSource().equals(btnB)){
+
+			if (e.getSource().equals(btnB)) {
 				Y = 1;
 				X--;
+				board.setX(X);
+				board.setY(Y);
 				board.updateBoard(X, Y);
 				board.printBoard();
-				if (X == 0){
+				updateChips();
+				if (X == 0) {
 					btnB.setEnabled(false);
 				}
 			}
-			if (e.getSource().equals(btnC)){
+			if (e.getSource().equals(btnC)) {
 				Y = 2;
 				X--;
+				board.setX(X);
+				board.setY(Y);
 				board.updateBoard(X, Y);
 				board.printBoard();
-				if (X == 0){
+				updateChips();
+				if (X == 0) {
 					btnC.setEnabled(false);
 				}
 			}
-			if (e.getSource().equals(btnD)){
+			if (e.getSource().equals(btnD)) {
 				Y = 3;
 				X--;
+				board.setX(X);
+				board.setY(Y);
 				board.updateBoard(X, Y);
 				board.printBoard();
-				if (X == 0){
+				updateChips();
+				if (X == 0) {
 					btnD.setEnabled(false);
 				}
 			}
-			if (e.getSource().equals(btnE)){
+			if (e.getSource().equals(btnE)) {
 				Y = 4;
 				X--;
+				board.setX(X);
+				board.setY(Y);
 				board.updateBoard(X, Y);
 				board.printBoard();
-				if (X == 0){
+				updateChips();
+				if (X == 0) {
 					btnE.setEnabled(false);
 				}
 			}
-			if (e.getSource().equals(btnF)){
+			if (e.getSource().equals(btnF)) {
 				Y = 5;
 				X--;
+				board.setX(X);
+				board.setY(Y);
 				board.updateBoard(X, Y);
 				board.printBoard();
-				if (X == 0){
+				updateChips();
+				if (X == 0) {
 					btnF.setEnabled(false);
 				}
 			}
-			if (e.getSource().equals(btnG)){
+			if (e.getSource().equals(btnG)) {
 				Y = 6;
 				X--;
+				board.setX(X);
+				board.setY(Y);
 				board.updateBoard(X, Y);
 				board.printBoard();
-				if (X == 0){
+				updateChips();
+				if (X == 0) {
 					btnG.setEnabled(false);
 				}
 			}

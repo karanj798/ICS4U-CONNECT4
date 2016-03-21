@@ -1,4 +1,5 @@
 package karan.harsh;
+
 import java.awt.Color;
 
 public class Board {
@@ -6,11 +7,28 @@ public class Board {
 	private char board[][] = new char[7][7];
 	int x, y;
 	boolean playerSwitch;
+	int turn = 0; 
 	Chip chip = new Chip();
+
 	public Board(int x, int y) {
 
 	}
 
+	public void setX(int i) {
+		this.x = i;
+	}
+
+	public void setY(int j) {
+		this.y = j;
+	}
+	
+	public int getX (){
+		return x;
+	}
+	
+	public int getY(){
+		return y;
+	}
 	public void makeBoard() {
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 7; j++) {
@@ -18,21 +36,38 @@ public class Board {
 			}
 		}
 	}
+	
+	public void setTurn (){
+		turn++;
+	}
+	
+	public int getTurn (){
+		return turn;
+	}
+	
+	public void setCondition (boolean x){
+		this.playerSwitch = x;
+	}
+	
+	public boolean getCondition (){
+		return playerSwitch;
+	}
 
 	public void updateBoard(int i, int j) {
-		// Make an object which sets color
-		if (!playerSwitch){
-			// if theres R set color to red 
+		
+		if (!getCondition()) {
+			
 			board[i][j] = 'R';
 			chip.setColor(Color.red);
-			playerSwitch = true;
-		}
-		else {
-			// if theres B set color to blue
+			setTurn();
+			setCondition (true);
+		} else {
+			
 			board[i][j] = 'B';
 			chip.setColor(Color.blue);
-			playerSwitch = false;
-		}		
+			setTurn();
+			setCondition (false);
+		}
 	}
 
 	public void printBoard() {
@@ -48,6 +83,6 @@ public class Board {
 	}
 
 	public void checkWinnerA() {
-		
+
 	}
 }
