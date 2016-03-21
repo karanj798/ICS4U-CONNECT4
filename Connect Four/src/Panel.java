@@ -99,6 +99,7 @@ public class Panel extends JPanel {
 	}
 	private class ClickListener implements ActionListener{
 		int X = 7, Y;
+		// 
 		public void actionPerformed(ActionEvent e) {
 			
 			if (e.getSource().equals(btnA)){
