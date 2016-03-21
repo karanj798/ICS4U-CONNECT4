@@ -7,7 +7,6 @@ public class Board {
 	private char board[][] = new char[7][7];
 	int x, y;
 	boolean playerSwitch;
-	int turn = 0; 
 	Chip chip = new Chip();
 
 	public Board(int x, int y) {
@@ -36,15 +35,7 @@ public class Board {
 			}
 		}
 	}
-	
-	public void setTurn (){
-		turn++;
-	}
-	
-	public int getTurn (){
-		return turn;
-	}
-	
+		
 	public void setCondition (boolean x){
 		this.playerSwitch = x;
 	}
@@ -59,13 +50,11 @@ public class Board {
 			
 			board[i][j] = 'R';
 			chip.setColor(Color.red);
-			setTurn();
 			setCondition (true);
 		} else {
 			
 			board[i][j] = 'B';
 			chip.setColor(Color.blue);
-			setTurn();
 			setCondition (false);
 		}
 	}
