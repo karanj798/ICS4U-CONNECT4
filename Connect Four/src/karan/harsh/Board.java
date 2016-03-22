@@ -5,7 +5,6 @@ public class Board {
 	private char board[][] = new char[7][7];
 	int x, y;
 	boolean playerSwitch, gameEnd, playerAWon, playerBWon;
-	Chip chip = new Chip();
 
 	public Board(int x, int y) {
 
@@ -52,16 +51,6 @@ public class Board {
 			board[i][j] = 'R';
 			setCondition(false);
 		}
-	}
-
-	public void printBoard() {
-		for (int i = 0; i < 7; i++) {
-			for (int j = 0; j < 7; j++) {
-				System.out.print(board[i][j] + "  ");
-			}
-			System.out.println();
-		}
-		System.out.println("--------------------");
 	}
 
 	public void checkWinnerA() {

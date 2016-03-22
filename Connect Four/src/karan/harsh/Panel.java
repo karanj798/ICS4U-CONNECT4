@@ -13,7 +13,6 @@ public class Panel extends JPanel {
 	int x = 0, y = 7;
 	boolean switchPlayer = false;
 	Board board = new Board(x, y);
-	Chip chip = new Chip();
 
 	public Panel() {
 		setPreferredSize(new Dimension(500, 600));
@@ -83,7 +82,6 @@ public class Panel extends JPanel {
 				board.setX(X);
 				board.setY(Y);
 				board.updateBoard(X, Y);
-				board.printBoard();
 				board.checkWinnerA();
 				board.checkWinnerB();
 				updateChips();
@@ -98,7 +96,6 @@ public class Panel extends JPanel {
 				board.setX(X);
 				board.setY(Y);
 				board.updateBoard(X, Y);
-				board.printBoard();
 				board.checkWinnerA();
 				board.checkWinnerB();
 				updateChips();
@@ -112,7 +109,6 @@ public class Panel extends JPanel {
 				board.setX(X);
 				board.setY(Y);
 				board.updateBoard(X, Y);
-				board.printBoard();
 				board.checkWinnerA();
 				board.checkWinnerB();
 				updateChips();
@@ -126,7 +122,6 @@ public class Panel extends JPanel {
 				board.setX(X);
 				board.setY(Y);
 				board.updateBoard(X, Y);
-				board.printBoard();
 				board.checkWinnerA();
 				board.checkWinnerB();
 				updateChips();
@@ -140,7 +135,6 @@ public class Panel extends JPanel {
 				board.setX(X);
 				board.setY(Y);
 				board.updateBoard(X, Y);
-				board.printBoard();
 				board.checkWinnerA();
 				board.checkWinnerB();
 				updateChips();
@@ -154,7 +148,6 @@ public class Panel extends JPanel {
 				board.setX(X);
 				board.setY(Y);
 				board.updateBoard(X, Y);
-				board.printBoard();
 				board.checkWinnerA();
 				board.checkWinnerB();
 				updateChips();
@@ -168,7 +161,6 @@ public class Panel extends JPanel {
 				board.setX(X);
 				board.setY(Y);
 				board.updateBoard(X, Y);
-				board.printBoard();
 				board.checkWinnerA();
 				board.checkWinnerB();
 				updateChips();
