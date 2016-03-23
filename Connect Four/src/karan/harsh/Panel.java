@@ -185,6 +185,9 @@ public class Panel extends JPanel {
 					System.exit(10);
 				}				
 			}
+			else {
+				JOptionPane.showMessageDialog(null, "The game has been tied...");
+			}
 		}
 	}
 }
