@@ -183,10 +183,10 @@ public class Panel extends JPanel {
 				else if (board.playerBWon){
 					JOptionPane.showMessageDialog(null, "Player B Won!!");
 					System.exit(10);
-				}				
-			}
-			else {
-				JOptionPane.showMessageDialog(null, "The game has been tied...");
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "The game has been tied...");
+				}
 			}
 		}
 	}
