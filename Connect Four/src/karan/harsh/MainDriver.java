@@ -5,12 +5,13 @@ import java.awt.event.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class HomePanel extends JPanel {
+public class MainDriver extends JFrame {
 	
 	final int FONT_SIZE = 48;
 	JLabel lblGameTitle;
 	
-	public HomePanel() {
+	/*
+	make panel
 		
 		setBackground(Color.BLACK);
 		setLayout(new GridLayout(8, 0, 55, 20));
@@ -18,7 +19,7 @@ public class HomePanel extends JPanel {
 		setFont(new Font("Kristen ITC",Font.PLAIN, FONT_SIZE));
 		
 		add (lblGameTitle);
+		*/
 		
 		
-	}
 }

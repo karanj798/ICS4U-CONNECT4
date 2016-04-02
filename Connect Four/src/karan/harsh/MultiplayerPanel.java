@@ -6,7 +6,7 @@ import javax.swing.*;
 
 
 @SuppressWarnings("serial")
-public class Panel extends JPanel {
+public class MultiplayerPanel extends JPanel {
 
 	JLabel lblTitle;
 	JButton btnA, btnB, btnC, btnD, btnE, btnF, btnG;
@@ -17,7 +17,7 @@ public class Panel extends JPanel {
 	String playerA = "";
 	String playerB = "";
 
-	public Panel() {
+	public MultiplayerPanel() {
 		setPreferredSize(new Dimension(500, 600));
 
 		setLayout(new GridLayout(8, 0, 55, 20));
