@@ -16,7 +16,6 @@ public class MultiplayerPanel extends JPanel {
 
 	public MultiplayerPanel() {
 		setPreferredSize(new Dimension(500, 600));
-
 		setLayout(new GridLayout(8, 0, 55, 20));
 		setBackground(Color.BLACK);
 		btnA = new JButton("A");
@@ -71,7 +70,7 @@ public class MultiplayerPanel extends JPanel {
 		}
 	}
 
-	private class ClickListener implements ActionListener {
+	public class ClickListener implements ActionListener {
 		int X = 7, Y;
 
 		public void actionPerformed(ActionEvent e) {
