@@ -8,6 +8,7 @@ public class AI {
 	private final char EMPTY = '*';
 	private boolean AIWon, playerWon;
 	private int x, y;
+	private boolean condition;
 
 	public AI() {
 
@@ -28,6 +29,13 @@ public class AI {
 	public int getAIY() {
 		return y;
 	}
+	
+	public void setCloseColumn (boolean condition){
+		this.condition = condition;
+	}
+	public boolean closeColumn (){
+		return condition;
+	}
 
 	public void makeBoard() {
 		for (int i = 0; i < board.length; i++) {
@@ -45,7 +53,7 @@ public class AI {
 		int index = 6;
 		boolean found = false;
 		while (!found) {
-			if (board[index][i] == '*') {
+			if (board[index][i] == EMPTY) {
 				found = true;
 			} else {
 				if (index > 0) {
@@ -54,6 +62,13 @@ public class AI {
 			}
 		}
 		return index;
+	}
+	
+	public boolean isColumnFull (int colNum){
+		if (board[0][colNum] == EMPTY){
+			return false;
+		}
+		return true;
 	}
 
 	public void printBoard() {
@@ -68,7 +83,16 @@ public class AI {
 
 	public void move() {
 		Random rn = new Random();
-		int random = rn.nextInt((6 - 0) + 1) + 0;
+		int random=0;
+		
+		boolean isValidColumn=false;
+		while (!isValidColumn){
+			random = rn.nextInt((6 - 0) + 1) + 0;
+			if (!isColumnFull(random)){
+				isValidColumn =true;
+			}
+		}
+		
 		setAIX(getIndex(random));
 		setAIY(random);
 		updateBoard(getAIX(), getAIY(), 'Y');

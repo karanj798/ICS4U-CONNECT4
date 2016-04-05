@@ -31,11 +31,7 @@ public class MainDriver extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnSingle) {
-			remove(panel);
-			frame.dispose();
-			panel1 = new SingleplayerPanel ();
-			panel1.setBackground(Color.black);
-			add(panel1);
+			// make a new frame
 		}
 		if (e.getSource() == btnMulti) {
 			remove(panel);

@@ -86,7 +86,7 @@ public class SingleplayerPanel extends JPanel {
 				ai.checkWinnerA();
 				ai.checkWinnerB();
 				if (x == 0) {
-					btnA.setEnabled(false);
+					btnB.setEnabled(false);
 				}
 			}
 			if (e.getSource() == btnC) {
@@ -99,7 +99,7 @@ public class SingleplayerPanel extends JPanel {
 				ai.checkWinnerA();
 				ai.checkWinnerB();
 				if (x == 0) {
-					btnA.setEnabled(false);
+					btnC.setEnabled(false);
 				}
 			}
 			if (e.getSource() == btnD) {
@@ -112,7 +112,7 @@ public class SingleplayerPanel extends JPanel {
 				ai.checkWinnerA();
 				ai.checkWinnerB();
 				if (x == 0) {
-					btnA.setEnabled(false);
+					btnD.setEnabled(false);
 				}
 			}
 			if (e.getSource() == btnE) {
@@ -125,7 +125,7 @@ public class SingleplayerPanel extends JPanel {
 				ai.checkWinnerA();
 				ai.checkWinnerB();
 				if (x == 0) {
-					btnA.setEnabled(false);
+					btnE.setEnabled(false);
 				}
 			}
 			if (e.getSource() == btnF) {
@@ -138,7 +138,7 @@ public class SingleplayerPanel extends JPanel {
 				ai.checkWinnerA();
 				ai.checkWinnerB();
 				if (x == 0) {
-					btnA.setEnabled(false);
+					btnF.setEnabled(false);
 				}
 			}
 			if (e.getSource() == btnG) {
@@ -151,9 +151,36 @@ public class SingleplayerPanel extends JPanel {
 				ai.checkWinnerA();
 				ai.checkWinnerB();
 				if (x == 0) {
-					btnA.setEnabled(false);
+					btnG.setEnabled(false);
 				}
 			}
+			
+			if (ai.isColumnFull (ai.getAIY())){
+				// FIND Which column is filled then disable that 
+				if (ai.getAIY() == 0){
+					btnA.setEnabled(false);
+				}
+				else if ((ai.getAIY() == 1)){
+					btnB.setEnabled(false);
+				}
+				else if ((ai.getAIY() == 2)){
+					btnC.setEnabled(false);
+				}
+				else if ((ai.getAIY() == 3)){
+					btnD.setEnabled(false);
+				}
+				else if ((ai.getAIY() == 4)){
+					btnE.setEnabled(false);
+				}
+				else if ((ai.getAIY() == 5)){
+					btnF.setEnabled(false);
+				}
+				else if ((ai.getAIY() == 6)){
+					btnG.setEnabled(false);
+				}
+				
+			}
+			
 			if (ai.getWinnerA()) {
 				btnA.setEnabled(false);
 				btnB.setEnabled(false);
