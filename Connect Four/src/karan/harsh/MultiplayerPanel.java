@@ -20,28 +20,44 @@ public class MultiplayerPanel extends JPanel {
 		setPreferredSize(new Dimension(500, 600));
 
 		setLayout(new GridLayout(8, 0, 55, 20));
-		setBackground(Color.BLACK);
-		btnA = new JButton("A");
+		setBackground(Color.BLUE);
+		ImageIcon image = new ImageIcon (getClass().getResource("/resources/arrowDown.png"));
+		
+		btnA = new JButton(image);
 		btnA.setPreferredSize(new Dimension(100, 100));
+		btnA.setContentAreaFilled(false);
 		add(btnA);
-		btnB = new JButton("B");
+		
+		btnB = new JButton(image);
 		btnB.setPreferredSize(new Dimension(100, 100));
+		btnB.setContentAreaFilled(false);
 		add(btnB);
-		btnC = new JButton("C");
+		
+		btnC = new JButton(image);
 		btnC.setPreferredSize(new Dimension(100, 100));
+		btnC.setContentAreaFilled(false);
 		add(btnC);
-		btnD = new JButton("D");
+		
+		btnD = new JButton(image);
 		btnD.setPreferredSize(new Dimension(100, 100));
+		btnD.setContentAreaFilled(false);
 		add(btnD);
-		btnE = new JButton("E");
+		
+		btnE = new JButton(image);
 		btnE.setPreferredSize(new Dimension(100, 100));
+		btnE.setContentAreaFilled(false);
 		add(btnE);
-		btnF = new JButton("F");
+		
+		btnF = new JButton(image);
 		btnF.setPreferredSize(new Dimension(100, 100));
+		btnF.setContentAreaFilled(false);
 		add(btnF);
-		btnG = new JButton("G");
+		
+		btnG = new JButton(image);
 		btnG.setPreferredSize(new Dimension(100, 100));
+		btnG.setContentAreaFilled(false);
 		add(btnG);
+		
 		lblCircles = new JLabel[7][7];
 
 		for (int i = 0; i < 7; i++) {
@@ -67,16 +83,15 @@ public class MultiplayerPanel extends JPanel {
 		while (playerA == null || playerA.isEmpty()) {
 			playerA = JOptionPane.showInputDialog(null, "Name of Player A: ");
 		}
-		JOptionPane.showMessageDialog(null, playerA + " is red.");
-
 		playerB = JOptionPane.showInputDialog(null, "Name of Player B: ");
 
 		while (playerB == null || playerB.isEmpty()) {
 			playerB = JOptionPane.showInputDialog(null, "Name of Player B: ");
 		}
+		
+		JOptionPane.showMessageDialog(null, playerA + " is red.");
 		JOptionPane.showMessageDialog(null, playerB + " is yellow.");
-
-		JOptionPane.showMessageDialog(null, playerB + " goes before " + playerA + ".");
+		JOptionPane.showMessageDialog(null, " It's " + playerA + "'s turn first.");
 	}
 
 	public void updateChips() {

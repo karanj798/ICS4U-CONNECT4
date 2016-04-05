@@ -89,7 +89,7 @@ public class AI {
 		while (!isValidColumn){
 			random = rn.nextInt((6 - 0) + 1) + 0;
 			if (!isColumnFull(random)){
-				isValidColumn =true;
+				isValidColumn = true;
 			}
 		}
 		

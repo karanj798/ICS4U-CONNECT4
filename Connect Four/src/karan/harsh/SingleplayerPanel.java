@@ -11,33 +11,48 @@ public class SingleplayerPanel extends JPanel {
 	AI ai;
 	final int COL_LENGTH = 7;
 	final int ROW_LENGTH = 7;
+	String  UserName = "";
 
 	public SingleplayerPanel() {
 		setPreferredSize(new Dimension(500, 600));
 		setLayout(new GridLayout(8, 0, 55, 20));
 		setBackground(Color.BLUE);
-		btnA = new JButton("A");
+		ImageIcon image = new ImageIcon (getClass().getResource("/resources/arrowDown.png"));
+		btnA = new JButton(image);
 		btnA.setPreferredSize(new Dimension(100, 100));
+		btnA.setContentAreaFilled(false);
 		add(btnA);
-		btnA.addActionListener(new ClickListener());
-		btnB = new JButton("B");
+		
+		btnB = new JButton(image);
 		btnB.setPreferredSize(new Dimension(100, 100));
+		btnB.setContentAreaFilled(false);
 		add(btnB);
-		btnC = new JButton("C");
+		
+		btnC = new JButton(image);
 		btnC.setPreferredSize(new Dimension(100, 100));
+		btnC.setContentAreaFilled(false);
 		add(btnC);
-		btnD = new JButton("D");
+		
+		btnD = new JButton(image);
 		btnD.setPreferredSize(new Dimension(100, 100));
+		btnD.setContentAreaFilled(false);
 		add(btnD);
-		btnE = new JButton("E");
+		
+		btnE = new JButton(image);
 		btnE.setPreferredSize(new Dimension(100, 100));
+		btnE.setContentAreaFilled(false);
 		add(btnE);
-		btnF = new JButton("F");
+		
+		btnF = new JButton(image);
 		btnF.setPreferredSize(new Dimension(100, 100));
+		btnF.setContentAreaFilled(false);
 		add(btnF);
-		btnG = new JButton("G");
+		
+		btnG = new JButton(image);
 		btnG.setPreferredSize(new Dimension(100, 100));
+		btnG.setContentAreaFilled(false);
 		add(btnG);
+		
 		lblCircles = new JLabel[7][7];
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 7; j++) {
@@ -46,7 +61,7 @@ public class SingleplayerPanel extends JPanel {
 				add(lblCircles[i][j]);
 			}
 		}
-
+		btnA.addActionListener(new ClickListener());
 		btnB.addActionListener(new ClickListener());
 		btnC.addActionListener(new ClickListener());
 		btnD.addActionListener(new ClickListener());
@@ -55,108 +70,113 @@ public class SingleplayerPanel extends JPanel {
 		btnG.addActionListener(new ClickListener());
 
 		ai = new AI();
-		ai.makeBoard(); // makes board
+		ai.makeBoard(); 
+		
+		UserName = JOptionPane.showInputDialog(null, "Name of Player: ");
+
+		while (UserName == null || UserName.isEmpty()) {
+			UserName = JOptionPane.showInputDialog(null, "Name of Player: ");
+		}
 	}
 
 	public class ClickListener implements ActionListener {
-		int x, y;
-		char player = 'R', AI = 'Y';
+		int rowPlayer, colPlayer;
+		char playerColor = 'R';
 
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == btnA) {
-				y = 0;
-				x = ai.getIndex(y);
-				ai.updateBoard(x, y, player);
-				updatePlayer(x, y);
+				colPlayer = 0;
+				rowPlayer = ai.getIndex(colPlayer);
+				ai.updateBoard(rowPlayer, colPlayer, playerColor);
+				updatePlayer(rowPlayer, colPlayer);
 				ai.move();
 				updateAI(ai.getAIX(), ai.getAIY());
 				ai.checkWinnerA();
 				ai.checkWinnerB();
-				if (x == 0) {
+				if (rowPlayer == 0) {
 					btnA.setEnabled(false);
 				}
 			}
 			if (e.getSource() == btnB) {
-				y = 1;
-				x = ai.getIndex(y);
-				ai.updateBoard(x, y, player);
-				updatePlayer(x, y);
+				colPlayer = 1;
+				rowPlayer = ai.getIndex(colPlayer);
+				ai.updateBoard(rowPlayer, colPlayer, playerColor);
+				updatePlayer(rowPlayer, colPlayer);
 				ai.move();
 				updateAI(ai.getAIX(), ai.getAIY());
 				ai.checkWinnerA();
 				ai.checkWinnerB();
-				if (x == 0) {
+				if (rowPlayer == 0) {
 					btnB.setEnabled(false);
 				}
 			}
 			if (e.getSource() == btnC) {
-				y = 2;
-				x = ai.getIndex(y);
-				ai.updateBoard(x, y, player);
-				updatePlayer(x, y);
+				colPlayer = 2;
+				rowPlayer = ai.getIndex(colPlayer);
+				ai.updateBoard(rowPlayer, colPlayer, playerColor);
+				updatePlayer(rowPlayer, colPlayer);
 				ai.move();
 				updateAI(ai.getAIX(), ai.getAIY());
 				ai.checkWinnerA();
 				ai.checkWinnerB();
-				if (x == 0) {
+				if (rowPlayer == 0) {
 					btnC.setEnabled(false);
 				}
 			}
 			if (e.getSource() == btnD) {
-				y = 3;
-				x = ai.getIndex(y);
-				ai.updateBoard(x, y, player);
-				updatePlayer(x, y);
+				colPlayer = 3;
+				rowPlayer = ai.getIndex(colPlayer);
+				ai.updateBoard(rowPlayer, colPlayer, playerColor);
+				updatePlayer(rowPlayer, colPlayer);
 				ai.move();
 				updateAI(ai.getAIX(), ai.getAIY());
 				ai.checkWinnerA();
 				ai.checkWinnerB();
-				if (x == 0) {
+				if (rowPlayer == 0) {
 					btnD.setEnabled(false);
 				}
 			}
 			if (e.getSource() == btnE) {
-				y = 4;
-				x = ai.getIndex(y);
-				ai.updateBoard(x, y, player);
-				updatePlayer(x, y);
+				colPlayer = 4;
+				rowPlayer = ai.getIndex(colPlayer);
+				ai.updateBoard(rowPlayer, colPlayer, playerColor);
+				updatePlayer(rowPlayer, colPlayer);
 				ai.move();
 				updateAI(ai.getAIX(), ai.getAIY());
 				ai.checkWinnerA();
 				ai.checkWinnerB();
-				if (x == 0) {
+				if (rowPlayer == 0) {
 					btnE.setEnabled(false);
 				}
 			}
 			if (e.getSource() == btnF) {
-				y = 5;
-				x = ai.getIndex(y);
-				ai.updateBoard(x, y, player);
-				updatePlayer(x, y);
+				colPlayer = 5;
+				rowPlayer = ai.getIndex(colPlayer);
+				ai.updateBoard(rowPlayer, colPlayer, playerColor);
+				updatePlayer(rowPlayer, colPlayer);
 				ai.move();
 				updateAI(ai.getAIX(), ai.getAIY());
 				ai.checkWinnerA();
 				ai.checkWinnerB();
-				if (x == 0) {
+				if (rowPlayer == 0) {
 					btnF.setEnabled(false);
 				}
 			}
 			if (e.getSource() == btnG) {
-				y = 6;
-				x = ai.getIndex(y);
-				ai.updateBoard(x, y, player);
-				updatePlayer(x, y);
+				colPlayer = 6;
+				rowPlayer = ai.getIndex(colPlayer);
+				ai.updateBoard(rowPlayer, colPlayer, playerColor);
+				updatePlayer(rowPlayer, colPlayer);
 				ai.move();
 				updateAI(ai.getAIX(), ai.getAIY());
 				ai.checkWinnerA();
 				ai.checkWinnerB();
-				if (x == 0) {
+				if (rowPlayer == 0) {
 					btnG.setEnabled(false);
 				}
 			}
 			
 			if (ai.isColumnFull (ai.getAIY())){
-				// FIND Which column is filled then disable that 
 				if (ai.getAIY() == 0){
 					btnA.setEnabled(false);
 				}
@@ -189,7 +209,7 @@ public class SingleplayerPanel extends JPanel {
 				btnE.setEnabled(false);
 				btnF.setEnabled(false);
 				btnG.setEnabled(false);
-				JOptionPane.showMessageDialog(null, "Player wins!");
+				JOptionPane.showMessageDialog(null,  UserName + " wins!");
 				System.exit(10);
 
 			} else if (ai.getWinnerB()) {
@@ -201,7 +221,7 @@ public class SingleplayerPanel extends JPanel {
 				btnE.setEnabled(false);
 				btnF.setEnabled(false);
 				btnG.setEnabled(false);
-				JOptionPane.showMessageDialog(null, "AI wins!");
+				JOptionPane.showMessageDialog(null, "Computer wins!");
 				System.exit(10);
 			} else if (ai.isEmpty()) {
 				JOptionPane.showMessageDialog(null, "Tie Game!");
