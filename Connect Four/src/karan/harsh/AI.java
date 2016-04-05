@@ -1,29 +1,31 @@
 package karan.harsh;
 
-public class Board {
+import java.util.*;
+
+public class AI {
 
 	private char board[][] = new char[7][7];
 	private final char EMPTY = '*';
+	private boolean AIWon, playerWon;
 	private int x, y;
-	private boolean playerSwitch, gameEnd, playerAWon, playerBWon;
 
-	public Board() {
+	public AI() {
 
 	}
 
-	public void setX(int i) {
-		this.x = i;
+	public void setAIX(int x) {
+		this.x = x;
 	}
 
-	public void setY(int j) {
-		this.y = j;
+	public void setAIY(int y) {
+		this.y = y;
 	}
 
-	public int getX() {
+	public int getAIX() {
 		return x;
 	}
 
-	public int getY() {
+	public int getAIY() {
 		return y;
 	}
 
@@ -35,29 +37,15 @@ public class Board {
 		}
 	}
 
-	public void setCondition(boolean x) {
-		this.playerSwitch = x;
-	}
-
-	public boolean getCondition() {
-		return playerSwitch;
-	}
-
-	public void updateBoard(int i, int j) {
-		if (!getCondition()) {
-			board[i][j] = 'R';
-			setCondition(true);
-		} else {
-			board[i][j] = 'Y';
-			setCondition(false);
-		}
+	public void updateBoard(int i, int j, char chipColor) {
+		board[i][j] = chipColor;
 	}
 
 	public int getIndex(int i) {
 		int index = 6;
 		boolean found = false;
 		while (!found) {
-			if (board[index][i] == EMPTY) {
+			if (board[index][i] == '*') {
 				found = true;
 			} else {
 				if (index > 0) {
@@ -75,32 +63,41 @@ public class Board {
 			}
 			System.out.println();
 		}
+		System.out.println("------------------------");
+	}
+
+	public void move() {
+		Random rn = new Random();
+		int random = rn.nextInt((6 - 0) + 1) + 0;
+		setAIX(getIndex(random));
+		setAIY(random);
+		updateBoard(getAIX(), getAIY(), 'Y');
 	}
 
 	public void checkWinnerA() {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
 				if (i >= 3) {
-					if (board[i][j] == 'Y' && board[i - 1][j] == 'Y' && board[i - 2][j] == 'Y'
-							&& board[i - 3][j] == 'Y') {
+					if (board[i][j] == 'R' && board[i - 1][j] == 'R' && board[i - 2][j] == 'R'
+							&& board[i - 3][j] == 'R') {
 						setWinnerA(true);
 					}
 				}
 				if (j <= 3) {
-					if (board[i][j] == 'Y' && board[i][j + 1] == 'Y' && board[i][j + 2] == 'Y'
-							&& board[i][j + 3] == 'Y') {
+					if (board[i][j] == 'R' && board[i][j + 1] == 'R' && board[i][j + 2] == 'R'
+							&& board[i][j + 3] == 'R') {
 						setWinnerA(true);
 					}
 				}
 				if (i <= 3 && j <= 3) {
-					if (board[i][j] == 'Y' && board[i + 1][j + 1] == 'Y' && board[i + 2][j + 2] == 'Y'
-							&& board[i + 3][j + 3] == 'Y') {
+					if (board[i][j] == 'R' && board[i + 1][j + 1] == 'R' && board[i + 2][j + 2] == 'R'
+							&& board[i + 3][j + 3] == 'R') {
 						setWinnerA(true);
 					}
 				}
 				if (i <= 3 && j >= 3) {
-					if (board[i][j] == 'Y' && board[i + 1][j - 1] == 'Y' && board[i + 2][j - 2] == 'Y'
-							&& board[i + 3][j - 3] == 'Y') {
+					if (board[i][j] == 'R' && board[i + 1][j - 1] == 'R' && board[i + 2][j - 2] == 'R'
+							&& board[i + 3][j - 3] == 'R') {
 						setWinnerA(true);
 					}
 				}
@@ -112,26 +109,26 @@ public class Board {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
 				if (i >= 3) {
-					if (board[i][j] == 'R' && board[i - 1][j] == 'R' && board[i - 2][j] == 'R'
-							&& board[i - 3][j] == 'R') {
+					if (board[i][j] == 'Y' && board[i - 1][j] == 'Y' && board[i - 2][j] == 'Y'
+							&& board[i - 3][j] == 'Y') {
 						setWinnerB(true);
 					}
 				}
 				if (j <= 3) {
-					if (board[i][j] == 'R' && board[i][j + 1] == 'R' && board[i][j + 2] == 'R'
-							&& board[i][j + 3] == 'R') {
+					if (board[i][j] == 'Y' && board[i][j + 1] == 'Y' && board[i][j + 2] == 'Y'
+							&& board[i][j + 3] == 'Y') {
 						setWinnerB(true);
 					}
 				}
 				if (i <= 3 && j <= 3) {
-					if (board[i][j] == 'R' && board[i + 1][j + 1] == 'R' && board[i + 2][j + 2] == 'R'
-							&& board[i + 3][j + 3] == 'R') {
+					if (board[i][j] == 'Y' && board[i + 1][j + 1] == 'Y' && board[i + 2][j + 2] == 'Y'
+							&& board[i + 3][j + 3] == 'Y') {
 						setWinnerB(true);
 					}
 				}
 				if (i <= 3 && j >= 3) {
-					if (board[i][j] == 'R' && board[i + 1][j - 1] == 'R' && board[i + 2][j - 2] == 'R'
-							&& board[i + 3][j - 3] == 'R') {
+					if (board[i][j] == 'Y' && board[i + 1][j - 1] == 'Y' && board[i + 2][j - 2] == 'Y'
+							&& board[i + 3][j - 3] == 'Y') {
 						setWinnerB(true);
 					}
 				}
@@ -140,19 +137,19 @@ public class Board {
 	}
 
 	public void setWinnerA(boolean condition) {
-		this.playerAWon = condition;
+		this.playerWon = condition;
 	}
 
 	public void setWinnerB(boolean condition) {
-		this.playerBWon = condition;
+		this.AIWon = condition;
 	}
 
 	public boolean getWinnerA() {
-		return playerAWon;
+		return playerWon;
 	}
 
 	public boolean getWinnerB() {
-		return playerBWon;
+		return AIWon;
 	}
 
 	public boolean isEmpty() {

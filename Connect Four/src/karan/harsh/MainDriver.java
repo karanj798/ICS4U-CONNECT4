@@ -1,25 +1,46 @@
 package karan.harsh;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
-@SuppressWarnings("serial")
-public class MainDriver extends JFrame {
+public class MainDriver extends JFrame implements ActionListener {
+	private JFrame frame; 
+	private JPanel panel, panel1, panel2; 
+	private JButton btnSingle, btnMulti;
 	
-	final int FONT_SIZE = 48;
-	JLabel lblGameTitle;
-	
-	/*
-	make panel
+	public static void main(String[] args) {
+		MainDriver md = new MainDriver();
 		
-		setBackground(Color.BLACK);
-		setLayout(new GridLayout(8, 0, 55, 20));
-		setPreferredSize(new Dimension(500, 600));
-		setFont(new Font("Kristen ITC",Font.PLAIN, FONT_SIZE));
-		
-		add (lblGameTitle);
-		*/
-		
-		
+	}
+	public MainDriver () {
+		frame = new JFrame("Connect 4");
+		panel = new JPanel();
+		btnSingle = new JButton("Single Player");
+		btnSingle.addActionListener(this);
+		btnMulti = new JButton("Multi Player");
+		btnMulti.addActionListener(this);
+		panel.add(btnSingle);
+		panel.add(btnMulti);
+		add(panel);
+		setVisible(true);
+		setSize(700, 600);
+		setResizable(false);
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnSingle) {
+			remove(panel);
+			frame.dispose();
+			panel1 = new SingleplayerPanel ();
+			panel1.setBackground(Color.black);
+			add(panel1);
+		}
+		if (e.getSource() == btnMulti) {
+			remove(panel);
+			panel2 = new MultiplayerPanel ();
+			add(panel2);
+		}
+	}
 }

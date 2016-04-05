@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-
 @SuppressWarnings("serial")
 public class MultiplayerPanel extends JPanel {
 
@@ -13,7 +12,7 @@ public class MultiplayerPanel extends JPanel {
 	JLabel lblCircles[][];
 	int x = 0, y = 7;
 	boolean switchPlayer = false;
-	Board board = new Board(x, y);
+	Board board = new Board();
 	String playerA = "";
 	String playerB = "";
 
@@ -44,7 +43,7 @@ public class MultiplayerPanel extends JPanel {
 		btnG.setPreferredSize(new Dimension(100, 100));
 		add(btnG);
 		lblCircles = new JLabel[7][7];
-		
+
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 7; j++) {
 				lblCircles[i][j] = new JLabel();
@@ -62,18 +61,22 @@ public class MultiplayerPanel extends JPanel {
 		btnG.addActionListener(new ClickListener());
 
 		board.makeBoard();
-			
+
 		playerA = JOptionPane.showInputDialog(null, "Name of Player A: ");
-		
-		while (playerA == null){
-			playerA = JOptionPane.showInputDialog(null, "Name of Player A: ");	
+
+		while (playerA == null || playerA.isEmpty()) {
+			playerA = JOptionPane.showInputDialog(null, "Name of Player A: ");
 		}
-		
+		JOptionPane.showMessageDialog(null, playerA + " is red.");
+
 		playerB = JOptionPane.showInputDialog(null, "Name of Player B: ");
-		
-		while (playerB == null){
+
+		while (playerB == null || playerB.isEmpty()) {
 			playerB = JOptionPane.showInputDialog(null, "Name of Player B: ");
-		}	
+		}
+		JOptionPane.showMessageDialog(null, playerB + " is yellow.");
+
+		JOptionPane.showMessageDialog(null, playerB + " goes before " + playerA + ".");
 	}
 
 	public void updateChips() {
@@ -88,103 +91,103 @@ public class MultiplayerPanel extends JPanel {
 	}
 
 	private class ClickListener implements ActionListener {
-		int X = 7, Y;
+		int x, y;
 
 		public void actionPerformed(ActionEvent e) {
 
 			if (e.getSource().equals(btnA)) {
-				Y = 0;
-				X--;
-				board.setX(X);
-				board.setY(Y);
-				board.updateBoard(X, Y);
+				y = 0;
+				x = board.getIndex(y);
+				board.setX(x);
+				board.setY(y);
+				board.updateBoard(x, y);
 				board.checkWinnerA();
 				board.checkWinnerB();
 				updateChips();
-				if (X == 0) {
+				if (x == 0) {
 					btnA.setEnabled(false);
 				}
 			}
 
 			if (e.getSource().equals(btnB)) {
-				Y = 1;
-				X--;
-				board.setX(X);
-				board.setY(Y);
-				board.updateBoard(X, Y);
+				y = 1;
+				x = board.getIndex(y);
+				board.setX(x);
+				board.setY(y);
+				board.updateBoard(x, y);
 				board.checkWinnerA();
 				board.checkWinnerB();
 				updateChips();
-				if (X == 0) {
+				if (x == 0) {
 					btnB.setEnabled(false);
 				}
 			}
 			if (e.getSource().equals(btnC)) {
-				Y = 2;
-				X--;
-				board.setX(X);
-				board.setY(Y);
-				board.updateBoard(X, Y);
+				y = 2;
+				x = board.getIndex(y);
+				board.setX(x);
+				board.setY(y);
+				board.updateBoard(x, y);
 				board.checkWinnerA();
 				board.checkWinnerB();
 				updateChips();
-				if (X == 0) {
+				if (x == 0) {
 					btnC.setEnabled(false);
 				}
 			}
 			if (e.getSource().equals(btnD)) {
-				Y = 3;
-				X--;
-				board.setX(X);
-				board.setY(Y);
-				board.updateBoard(X, Y);
+				y = 3;
+				x = board.getIndex(y);
+				board.setX(x);
+				board.setY(y);
+				board.updateBoard(x, y);
 				board.checkWinnerA();
 				board.checkWinnerB();
 				updateChips();
-				if (X == 0) {
+				if (x == 0) {
 					btnD.setEnabled(false);
 				}
 			}
 			if (e.getSource().equals(btnE)) {
-				Y = 4;
-				X--;
-				board.setX(X);
-				board.setY(Y);
-				board.updateBoard(X, Y);
+				y = 4;
+				x = board.getIndex(y);
+				board.setX(x);
+				board.setY(y);
+				board.updateBoard(x, y);
 				board.checkWinnerA();
 				board.checkWinnerB();
 				updateChips();
-				if (X == 0) {
+				if (x == 0) {
 					btnE.setEnabled(false);
 				}
 			}
 			if (e.getSource().equals(btnF)) {
-				Y = 5;
-				X--;
-				board.setX(X);
-				board.setY(Y);
-				board.updateBoard(X, Y);
+				y = 5;
+				x = board.getIndex(y);
+				board.setX(x);
+				board.setY(y);
+				board.updateBoard(x, y);
 				board.checkWinnerA();
 				board.checkWinnerB();
 				updateChips();
-				if (X == 0) {
+				if (x == 0) {
 					btnF.setEnabled(false);
 				}
 			}
 			if (e.getSource().equals(btnG)) {
-				Y = 6;
-				X--;
-				board.setX(X);
-				board.setY(Y);
-				board.updateBoard(X, Y);
+				y = 6;
+				x = board.getIndex(y);
+				board.setX(x);
+				board.setY(y);
+				board.updateBoard(x, y);
 				board.checkWinnerA();
 				board.checkWinnerB();
 				updateChips();
-				if (X == 0) {
+				if (x == 0) {
 					btnG.setEnabled(false);
 				}
 			}
-			if (board.getGameOver()){
+			if (board.getWinnerA()) {
 				btnA.setEnabled(false);
 				btnB.setEnabled(false);
 				btnC.setEnabled(false);
@@ -192,20 +195,23 @@ public class MultiplayerPanel extends JPanel {
 				btnE.setEnabled(false);
 				btnF.setEnabled(false);
 				btnG.setEnabled(false);
-				if (board.playerAWon){
-					JOptionPane.showMessageDialog(null, playerA + " wins!");
-					System.exit(10);
-					
-				}
-				else if (board.playerBWon){
-					JOptionPane.showMessageDialog(null, playerB + " wins!");
-					System.exit(10);
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "Tie Game!");
-					System.exit(10); 
-				}
-					
+				JOptionPane.showMessageDialog(null, playerA + " wins!");
+				System.exit(10);
+
+			} else if (board.getWinnerB()) {
+
+				btnA.setEnabled(false);
+				btnB.setEnabled(false);
+				btnC.setEnabled(false);
+				btnD.setEnabled(false);
+				btnE.setEnabled(false);
+				btnF.setEnabled(false);
+				btnG.setEnabled(false);
+				JOptionPane.showMessageDialog(null, playerB + " wins!");
+				System.exit(10);
+			} else if (board.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Tie Game!");
+				System.exit(10);
 			}
 		}
 	}

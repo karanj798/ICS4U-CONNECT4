@@ -1,30 +1,25 @@
 package karan.harsh;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import karan.harsh.MultiplayerPanel.ClickListener;
-
-public class SingleplayerPanel extends JPanel{
-	JLabel lblCircles[][];
-	JButton btnA, btnB, btnC, btnD, btnE, btnF, btnG;
-	JLabel lblTitle;
+@SuppressWarnings("serial")
+public class SingleplayerPanel extends JPanel {
+	private JLabel lblCircles[][];
+	private JButton btnA, btnB, btnC, btnD, btnE, btnF, btnG;
+	AI ai;
+	final int COL_LENGTH = 7;
+	final int ROW_LENGTH = 7;
 
 	public SingleplayerPanel() {
 		setPreferredSize(new Dimension(500, 600));
 		setLayout(new GridLayout(8, 0, 55, 20));
-		setBackground(Color.BLACK);
+		setBackground(Color.BLUE);
 		btnA = new JButton("A");
 		btnA.setPreferredSize(new Dimension(100, 100));
 		add(btnA);
+		btnA.addActionListener(new ClickListener());
 		btnB = new JButton("B");
 		btnB.setPreferredSize(new Dimension(100, 100));
 		add(btnB);
@@ -52,7 +47,6 @@ public class SingleplayerPanel extends JPanel{
 			}
 		}
 
-		btnA.addActionListener(new ClickListener());
 		btnB.addActionListener(new ClickListener());
 		btnC.addActionListener(new ClickListener());
 		btnD.addActionListener(new ClickListener());
@@ -60,21 +54,141 @@ public class SingleplayerPanel extends JPanel{
 		btnF.addActionListener(new ClickListener());
 		btnG.addActionListener(new ClickListener());
 
+		ai = new AI();
+		ai.makeBoard(); // makes board
 	}
-	public class ClickListener implements ActionListener{
+
+	public class ClickListener implements ActionListener {
+		int x, y;
+		char player = 'R', AI = 'Y';
+
 		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == btnA){
-				
+			if (e.getSource() == btnA) {
+				y = 0;
+				x = ai.getIndex(y);
+				ai.updateBoard(x, y, player);
+				updatePlayer(x, y);
+				ai.move();
+				updateAI(ai.getAIX(), ai.getAIY());
+				ai.checkWinnerA();
+				ai.checkWinnerB();
+				if (x == 0) {
+					btnA.setEnabled(false);
+				}
 			}
-			if (e.getSource() == btnB){
-				
+			if (e.getSource() == btnB) {
+				y = 1;
+				x = ai.getIndex(y);
+				ai.updateBoard(x, y, player);
+				updatePlayer(x, y);
+				ai.move();
+				updateAI(ai.getAIX(), ai.getAIY());
+				ai.checkWinnerA();
+				ai.checkWinnerB();
+				if (x == 0) {
+					btnA.setEnabled(false);
+				}
 			}
-			if (e.getSource() == btnC){
-				
+			if (e.getSource() == btnC) {
+				y = 2;
+				x = ai.getIndex(y);
+				ai.updateBoard(x, y, player);
+				updatePlayer(x, y);
+				ai.move();
+				updateAI(ai.getAIX(), ai.getAIY());
+				ai.checkWinnerA();
+				ai.checkWinnerB();
+				if (x == 0) {
+					btnA.setEnabled(false);
+				}
 			}
-			if (e.getSource() == btnD){
-				
+			if (e.getSource() == btnD) {
+				y = 3;
+				x = ai.getIndex(y);
+				ai.updateBoard(x, y, player);
+				updatePlayer(x, y);
+				ai.move();
+				updateAI(ai.getAIX(), ai.getAIY());
+				ai.checkWinnerA();
+				ai.checkWinnerB();
+				if (x == 0) {
+					btnA.setEnabled(false);
+				}
+			}
+			if (e.getSource() == btnE) {
+				y = 4;
+				x = ai.getIndex(y);
+				ai.updateBoard(x, y, player);
+				updatePlayer(x, y);
+				ai.move();
+				updateAI(ai.getAIX(), ai.getAIY());
+				ai.checkWinnerA();
+				ai.checkWinnerB();
+				if (x == 0) {
+					btnA.setEnabled(false);
+				}
+			}
+			if (e.getSource() == btnF) {
+				y = 5;
+				x = ai.getIndex(y);
+				ai.updateBoard(x, y, player);
+				updatePlayer(x, y);
+				ai.move();
+				updateAI(ai.getAIX(), ai.getAIY());
+				ai.checkWinnerA();
+				ai.checkWinnerB();
+				if (x == 0) {
+					btnA.setEnabled(false);
+				}
+			}
+			if (e.getSource() == btnG) {
+				y = 6;
+				x = ai.getIndex(y);
+				ai.updateBoard(x, y, player);
+				updatePlayer(x, y);
+				ai.move();
+				updateAI(ai.getAIX(), ai.getAIY());
+				ai.checkWinnerA();
+				ai.checkWinnerB();
+				if (x == 0) {
+					btnA.setEnabled(false);
+				}
+			}
+			if (ai.getWinnerA()) {
+				btnA.setEnabled(false);
+				btnB.setEnabled(false);
+				btnC.setEnabled(false);
+				btnD.setEnabled(false);
+				btnE.setEnabled(false);
+				btnF.setEnabled(false);
+				btnG.setEnabled(false);
+				JOptionPane.showMessageDialog(null, "Player wins!");
+				System.exit(10);
+
+			} else if (ai.getWinnerB()) {
+
+				btnA.setEnabled(false);
+				btnB.setEnabled(false);
+				btnC.setEnabled(false);
+				btnD.setEnabled(false);
+				btnE.setEnabled(false);
+				btnF.setEnabled(false);
+				btnG.setEnabled(false);
+				JOptionPane.showMessageDialog(null, "AI wins!");
+				System.exit(10);
+			} else if (ai.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Tie Game!");
+				System.exit(10);
 			}
 		}
+	}
+
+	public void updatePlayer(int i, int j) {
+		lblCircles[i][j].setIcon(new ImageIcon(getClass().getResource("/resources/redChip.png")));
+	}
+
+	public void updateAI(int i, int j) {
+		lblCircles[i][j].setIcon(new ImageIcon(getClass().getResource("/resources/yellowChip.png")));
+
 	}
 }
