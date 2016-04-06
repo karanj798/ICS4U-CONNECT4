@@ -74,7 +74,7 @@ public class SingleplayerPanel extends JPanel {
 		
 		UserName = JOptionPane.showInputDialog(null, "Name of Player: ");
 
-		while (UserName == null || UserName.isEmpty()) {
+		while (UserName.isEmpty()) {
 			UserName = JOptionPane.showInputDialog(null, "Name of Player: ");
 		}
 	}
@@ -210,7 +210,11 @@ public class SingleplayerPanel extends JPanel {
 				btnF.setEnabled(false);
 				btnG.setEnabled(false);
 				JOptionPane.showMessageDialog(null,  UserName + " wins!");
-				System.exit(10);
+				int responds = JOptionPane.showConfirmDialog(null, "Do you want to play the game agian?");
+				if (responds == 0){
+					new MainDriver ();
+				}
+
 
 			} else if (ai.getWinnerB()) {
 
@@ -222,10 +226,16 @@ public class SingleplayerPanel extends JPanel {
 				btnF.setEnabled(false);
 				btnG.setEnabled(false);
 				JOptionPane.showMessageDialog(null, "Computer wins!");
-				System.exit(10);
+				int responds = JOptionPane.showConfirmDialog(null, "Do you want to play the game agian?");
+				if (responds == 0){
+					new MainDriver ();
+				}
 			} else if (ai.isEmpty()) {
 				JOptionPane.showMessageDialog(null, "Tie Game!");
-				System.exit(10);
+				int responds = JOptionPane.showConfirmDialog(null, "Do you want to play the game agian?");
+				if (responds == 0){
+					new MainDriver ();
+				}
 			}
 		}
 	}

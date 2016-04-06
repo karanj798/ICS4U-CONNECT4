@@ -14,7 +14,7 @@ public class MainDriver extends JFrame {
 		JFrame frame = new JFrame("Connect 4");
 		JPanel panel = new JPanel();
 		
-		Object[] homeoption = {"Single Player", "Multiplayer", "Instructions"};
+		Object[] homeoption = {"Single Player Game", "Two Player Game", "Cancel"};
 		int n = JOptionPane.showOptionDialog(frame,"To play Connect 4, please select one of the options below.",
 			    "Connect 4",
 			    JOptionPane.YES_NO_CANCEL_OPTION,
@@ -30,6 +30,7 @@ public class MainDriver extends JFrame {
 			optionFrame.setResizable(false);
 			optionFrame.setSize(700, 600);
 			optionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
 		} else if (n == 1){
 			JFrame optionFrame = new JFrame("Connect Four");
 			optionFrame.getContentPane().add(new MultiplayerPanel());
@@ -38,7 +39,16 @@ public class MainDriver extends JFrame {
 			optionFrame.setResizable(false);
 			optionFrame.setSize(700, 600);
 			optionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
 		}
-		
+		else if (n == 2){
+			int response = JOptionPane.showConfirmDialog(null, "Do you want to exit the program?");
+			if (response == 0){
+				System.exit(0);
+			}
+			else if (response == 1){
+				new MainDriver();
+			}
+		}
 	}
 }

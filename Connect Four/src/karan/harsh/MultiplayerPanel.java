@@ -80,18 +80,18 @@ public class MultiplayerPanel extends JPanel {
 
 		playerA = JOptionPane.showInputDialog(null, "Name of Player A: ");
 
-		while (playerA == null || playerA.isEmpty()) {
+		while (playerA.isEmpty()) {
 			playerA = JOptionPane.showInputDialog(null, "Name of Player A: ");
 		}
 		playerB = JOptionPane.showInputDialog(null, "Name of Player B: ");
 
-		while (playerB == null || playerB.isEmpty()) {
+		while (playerB.isEmpty()) {
 			playerB = JOptionPane.showInputDialog(null, "Name of Player B: ");
 		}
 		
 		JOptionPane.showMessageDialog(null, playerA + " is red.");
 		JOptionPane.showMessageDialog(null, playerB + " is yellow.");
-		JOptionPane.showMessageDialog(null, " It's " + playerA + "'s turn first.");
+		JOptionPane.showMessageDialog(null, " It's " + playerB + "'s turn first.");
 	}
 
 	public void updateChips() {
@@ -211,7 +211,10 @@ public class MultiplayerPanel extends JPanel {
 				btnF.setEnabled(false);
 				btnG.setEnabled(false);
 				JOptionPane.showMessageDialog(null, playerA + " wins!");
-				System.exit(10);
+				int responds = JOptionPane.showConfirmDialog(null, "Do you want to play the game agian?");
+				if (responds == 0){
+					new MainDriver ();
+				}
 
 			} else if (board.getWinnerB()) {
 
@@ -223,10 +226,16 @@ public class MultiplayerPanel extends JPanel {
 				btnF.setEnabled(false);
 				btnG.setEnabled(false);
 				JOptionPane.showMessageDialog(null, playerB + " wins!");
-				System.exit(10);
+				int responds = JOptionPane.showConfirmDialog(null, "Do you want to play the game agian?");
+				if (responds == 0){
+					new MainDriver ();
+				}
 			} else if (board.isEmpty()) {
 				JOptionPane.showMessageDialog(null, "Tie Game!");
-				System.exit(10);
+				int responds = JOptionPane.showConfirmDialog(null, "Do you want to play the game agian?");
+				if (responds == 0){
+					new MainDriver ();
+				}
 			}
 		}
 	}
