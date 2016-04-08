@@ -1,42 +1,60 @@
 package karan.harsh;
-
 import java.util.*;
-
+/**
+ * 
+ * @author Karan Jariwala, Harsh Joshi
+ * @description This class defines the game of connect 4.
+ * @version 3.5
+ */
 public class AI {
 
 	private char board[][] = new char[7][7];
 	private final char EMPTY = '*';
 	private boolean AIWon, playerWon;
 	private int x, y;
-	private boolean condition;
 
+	/**
+	 * Constructor of AI class.
+	 */
 	public AI() {
 
 	}
 
+	/**
+	 * Mutator method of X
+	 * @param x
+	 */
 	public void setAIX(int x) {
 		this.x = x;
 	}
 
+	/**
+	 * Mutator method of Y
+	 * @param y
+	 */
 	public void setAIY(int y) {
 		this.y = y;
 	}
 
+	/**
+	 * Accessor method of X
+	 * @return
+	 */
 	public int getAIX() {
 		return x;
 	}
 
+	/**
+	 * Accessor method of Y
+	 * @return
+	 */
 	public int getAIY() {
 		return y;
 	}
-	
-	public void setCloseColumn (boolean condition){
-		this.condition = condition;
-	}
-	public boolean closeColumn (){
-		return condition;
-	}
 
+	/**
+	 * This method creates a blank 2d array (board).
+	 */
 	public void makeBoard() {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
@@ -45,6 +63,12 @@ public class AI {
 		}
 	}
 
+	/**
+	 * This method updates board.
+	 * @param i
+	 * @param j
+	 * @param chipColor
+	 */
 	public void updateBoard(int i, int j, char chipColor) {
 		board[i][j] = chipColor;
 	}
@@ -64,6 +88,11 @@ public class AI {
 		return index;
 	}
 	
+	/**
+	 * Helper method used to check if a column is full.
+	 * @param colNum
+	 * @return
+	 */
 	public boolean isColumnFull (int colNum){
 		if (board[0][colNum] == EMPTY){
 			return false;
@@ -71,16 +100,9 @@ public class AI {
 		return true;
 	}
 
-	public void printBoard() {
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board[i].length; j++) {
-				System.out.print(board[i][j] + " ");
-			}
-			System.out.println();
-		}
-		System.out.println("------------------------");
-	}
-
+	/**
+	 * Helper method places chips randomly. 
+	 */
 	public void move() {
 		Random rn = new Random();
 		int random=0;
@@ -98,6 +120,9 @@ public class AI {
 		updateBoard(getAIX(), getAIY(), 'Y');
 	}
 
+	/**
+	 * This method is used to check for winner.
+	 */
 	public void checkWinnerA() {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
@@ -129,6 +154,9 @@ public class AI {
 		}
 	}
 
+	/**
+	 * This method is used to check for winner.
+	 */
 	public void checkWinnerB() {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
@@ -160,22 +188,42 @@ public class AI {
 		}
 	}
 
+	/**
+	 * Mutator method of playerAWon
+	 * @param condition
+	 */
 	public void setWinnerA(boolean condition) {
 		this.playerWon = condition;
 	}
 
+	/**
+	 * Mutator method of playerBWon
+	 * @param condition
+	 */
 	public void setWinnerB(boolean condition) {
 		this.AIWon = condition;
 	}
 
+	/**
+	 * Accessor method of playerAWon
+	 * @return
+	 */
 	public boolean getWinnerA() {
 		return playerWon;
 	}
 
+	/**
+	 * Accessor method of playerBWon
+	 * @return
+	 */
 	public boolean getWinnerB() {
 		return AIWon;
 	}
 
+	/**
+	 * Helper method check for any * in array.
+	 * @return
+	 */
 	public boolean isEmpty() {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
